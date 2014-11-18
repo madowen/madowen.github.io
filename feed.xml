@@ -1,0 +1,1164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>Alex Catalán</title>
+		<description>Game Engineer</description>
+		<link>http://localhost:4000/</link>
+		
+			<item>
+				<title>Match 3</title>
+				<description>&lt;p style=&quot;text-align:justify;&quot;&gt;
+    This time the challenge proposed is a Match 3 game, like Bejeweled made by PopCap, Candy Crush Saga from King, or Frozen Free Fall developed by &lt;a href=&quot;http://www.generamobile.com/&quot;&gt;Genera Interactive&lt;/a&gt; who proposed me this challenge.
+&lt;/p&gt;
+
+
+&lt;p id=&quot;more&quot;&gt;
+    &lt;!--more--&gt;
+&lt;/p&gt;
+
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    The objective of the game is quite simple, you have to change a tile by an adjacent (up,down,right or left) in order to get 3 (or more) tiles in a row or column, if there isn&#39;t a match of 3, tiles will swap back to their position, else if the match exists, all the tiles in the match will disapear. Then the above tiles will fall to fill the blanks and new ones will be created to fill in the blanks at the top of the board.
+&lt;/p&gt;
+
+
+
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    Click on the image below to play it. To swap the tiles, click on the two tiles.
+&lt;/p&gt;
+
+
+
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    &lt;a href=&quot;/assets/2014-08-27-Match-3/2DMatch3.html&quot;&gt;&lt;img src=&quot;/assets/2014-08-27-Match-3/Match3-player.jpg&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+</description>
+				<published>2014-08-27 00:00:00 +0200</published>
+				<link>http://localhost:4000//Match-3</link>
+			</item>
+		
+			<item>
+				<title>Challenge 2D</title>
+				<description>&lt;p style=&quot;text-align:justify;&quot;&gt;
+    This is the result of a challenge proposed by &lt;a href=&quot;http://www.bigvikinggames.com/&quot;&gt;Big Viking Games&lt;/a&gt;, they provided me the graphics and the development depended on me. It took me 10 days to develop it from scratch.
+&lt;/p&gt;
+
+
+
+
+&lt;p id=&quot;more&quot;&gt;
+    &lt;!--more--&gt;
+&lt;/p&gt;
+
+
+
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    The terrain is generated procedurally, it has some zones with different set of tiles, each zone has a basic tile that appears around the 90% of times and the other 10% comes from decoration tiles of each zone. Apart from the zones, decoratives tiles can appear in all zones, and then there are the obstacles that provides cover against the enemy projectiles.
+&lt;/p&gt;
+
+
+
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    There are 3 types of enemies, with their own Artificial Intelligence, stats and bullets.
+&lt;/p&gt;
+
+
+
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    I have made 2 builds this time, one for the web and the other playable on Android. Here is the Android version: &lt;a href=&quot;https://drive.google.com/file/d/0ByHy-gkwAub_bW5kYWhnRldnTDg/edit?usp=sharing&quot; style=&quot;line-height:1.6em;&quot;&gt;Challenge2D.apk&lt;/a&gt;
+&lt;/p&gt;
+
+
+
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    And here is the web version, if the terrain is not loaded in all the screen width, try to refresh the page. Click on the image below.
+&lt;/p&gt;
+
+
+
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    &lt;a href=&quot;/assets/2014-05-20-Challenge-2D/Challenge2D.html&quot;&gt;&lt;img src=&quot;/assets/2014-05-20-Challenge-2D/Challenge-2D-player.jpg&quot;&gt;&lt;/a&gt;
+&lt;/p&gt;
+
+</description>
+				<published>2014-05-20 00:00:00 +0200</published>
+				<link>http://localhost:4000//Challenge-2D</link>
+			</item>
+		
+			<item>
+				<title>Procedural Terrain Generation</title>
+				<description>&lt;p style=&quot;text-align:justify;&quot; id=&quot;more&quot;&gt;
+    The first thing we should ask ourselves is: What is the procedural content generation and what we can do with it on games? PCG is the the automatic or computer-assisted generation of game content such as levels, landscapes, items, rules, quests etc. This time we are generating the terrain for a posible sandbox game using voxels, like Minecraft.&lt;!--more--&gt; I have decided to use voxels because they are easy to manage and will allow me to do whatever I want with the terrain (cliffs, mountains, canyons, caves, corridors between caves, etc)
+&lt;/p&gt;
+
+
+&lt;div&gt;
+&lt;h2&gt;
+    Noise
+&lt;/h2&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+&lt;img class=&quot;alignright&quot; src=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/SignalNoise.png&quot; width=&quot;212&quot;&gt;
+    &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2014/04/SignalNoise.png&quot; rel=&quot;&quot; style=&quot;font-size:13px;text-align:justify;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;Signal Noise&quot; class=&quot;alignright size-full wp-image-103&quot; height=&quot;158&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2014/04/SignalNoise.png&quot; title=&quot;Signal Noise&quot; width=&quot;212&quot; /&gt;&lt;/a&gt;--&gt;To generate our terrain we will use a noise signal. What is noise? Noise is a general term for unwanted modifications that a signal may suffer. This definittion is usually for processing audio signals but in computer graphics noise is used to generate realistic contents. There are different algorithms to make noise, but the most common is Perlin Noise developed by Ken Perlin, who won an Academy Award for Technical Achievement for inventing it.
+&lt;/p&gt;
+
+&lt;h3 style=&quot;text-align:justify;&quot;&gt;
+    Perlin Noise
+&lt;/h3&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    Perlin Noise is most commonly implemented as a 2D, 3D or 4D function, but can be defined for any number of dimensions.
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    The algorithm takes a noise function to generate a number of samples with different frequency and amplitude, these samples are summed to generate a new signal, you can see it on the next images in 1D and 2D.
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+&lt;img src=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/Perlin-Noise-1D.png&quot;&gt;
+    &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Perlin-Noise-1D.png&quot; rel=&quot;&quot; style=&quot;font-size:13px;text-align:justify;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;Perlin Noise 1D&quot; class=&quot;size-full wp-image-103 aligncenter&quot; height=&quot;99&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Perlin-Noise-1D.png&quot; title=&quot;Perlin Noise 1D&quot; width=&quot;963&quot; /&gt;&lt;/a&gt;--&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    As you can see, every sample adds a perturbation to the first one, being the first with greater amplitude the most significant, the next ones have less amplitude but greater frequency, which is what adds the disturbing values to the signal.
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+&lt;img src=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/Perlin-Noise-2D.png&quot;&gt;
+    &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Perlin-Noise-2D.png&quot; rel=&quot;&quot; style=&quot;font-size:13px;text-align:justify;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;Perlin Noise 2D&quot; class=&quot;size-full wp-image-103 aligncenter&quot; height=&quot;99&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Perlin-Noise-2D.png&quot; title=&quot;Perlin Noise 2D&quot; width=&quot;963&quot; /&gt;&lt;/a&gt;--&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    Knowing this, the Perlin Noise function comes from basically 2 parameters apart from the N coordenates in N-Dimension noise, the Persistance and the Octaves. Each successive noise function you add is know as an Octave and the Persistance deffines the amplitude of each Octave.
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    \(frequency = 2^i\)&lt;br /&gt;
+    \(amplitude = persistence^i\)
+&lt;/p&gt;
+
+&lt;h3 style=&quot;text-align:justify;&quot;&gt;
+    Simplex Noise
+&lt;/h3&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    Now that we know the basics of Perlin Noise, Ken Perlin in 2001 designed an algorithm to address the limitations of his classic noise function, especially in higher dimensions. The Simplex Noise is a method for constructing an n-dimensional noise function comparable to Perlin Noise but with a lower computational overhead, especially in larger dimensions.&lt;br /&gt;
+    The advantages of simplex noise over Perlin noise:
+&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;
+        Simplex noise has a lower computational complexity and requires fewer multiplications.
+    &lt;/li&gt;
+    &lt;li&gt;
+        Simplex noise scales to higher dimensions (4D, 5D) with much less computational cost, the complexity is \(O(n^2)\) for n dimensions instead of the \(O(2^n)\) of classic noise.
+    &lt;/li&gt;
+    &lt;li&gt;
+        Simplex noise has no noticeable directional artifacts (is isotropic).
+    &lt;/li&gt;
+    &lt;li&gt;
+        Simplex noise has a well-defined and continuous gradient everywhere that can be computed quite cheaply.
+    &lt;/li&gt;
+    &lt;li&gt;
+        Simplex noise is easy to implement in hardware.
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+     
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    These are the reasons why I chose Simplex Noise instead of Perlin Noise. The values ​​obtained are virtually the same but the algorithm is better.
+&lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+&lt;h2&gt;
+    Terrain
+&lt;/h2&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+&lt;img class=&quot;alignright&quot; src=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/Noise.jpg&quot; width=&quot;212&quot;&gt;
+    &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Noise.jpg&quot; rel=&quot;&quot; style=&quot;font-size:13px;text-align:justify;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;Noise&quot; class=&quot;alignright size-full wp-image-103&quot; height=&quot;158&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Noise.jpg&quot; title=&quot;Noise&quot; width=&quot;212&quot; /&gt;&lt;/a&gt;--&gt;Once we have defined the noise algorithm with the Persistance and the Octaves, we simply create a voxel at coordinates (X, Y, Z), where the Y-coordinate is the value obtained by the noise function. As the value comes between (-1, 1) we sum 1 and divide by 2 to get a value between (0, 1). Now we simply multiply that value by the maximum height that we want to our terrain.
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    This is what you get with a Persistence of 0.27 and 3 Octaves, I have divided the terrain in sectors because of limitations of Unity, there are 10x10 sectors with 20x20 cubes per sector (around 40k cubes), but this is not really important to see what we want to.
+&lt;/p&gt;
+&lt;a href=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/MaDCraft-Linear.html&quot;&gt;&lt;img src=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/MaDCraft-Linear-Player.jpg&quot;&gt;&lt;/a&gt;
+
+&lt;h3&gt;
+    Biomes
+&lt;/h3&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+&lt;img class=&quot;alignright&quot; src=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/Biome-Linear.png&quot; width=&quot;212&quot;&gt;
+    &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Biome-Linear.png&quot; rel=&quot;&quot; style=&quot;font-size:13px;text-align:justify;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;Biome - Linear&quot; class=&quot;alignright size-full wp-image-103&quot; height=&quot;142&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Biome-Linear.png&quot; title=&quot;Biome - Linear&quot; width=&quot;191&quot; /&gt;&lt;/a&gt;--&gt;Here we have it, our procedurally generated terrain using voxels and Simplex noise but... is pretty boring, it would be great if it had some cliffs, canyons, high mountains, etc. To do that we have to create some biomes.
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    Biomes, taking Minecraft as model, are regions with varying geographical features, flora, heights, temperatures, humidity ratings, and sky and foliage colors. From now on we will focus our work on heights, using a curve values we can modify the height of our terrain and create completly different terrains with the same noise parameters.&lt;img class=&quot;alignright&quot; src=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/Biome-Cliff.png&quot; width=&quot;212&quot;&gt;&lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Biome-Cliff.png&quot; rel=&quot;&quot; style=&quot;font-size:13px;text-align:justify;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;Biome - Cliff&quot; class=&quot;alignright size-full wp-image-103&quot; height=&quot;142&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Biome-Cliff.png&quot; title=&quot;Biome - Cliff&quot; width=&quot;191&quot; /&gt;&lt;/a&gt;--&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    The first curve on the right, is a straight line from 0 to 1, this means that if you get a value from the noise function equals to 0.1 and you evaluate this value with the curve, you will get the same value 0.1, in other words this is the curve used at the example seen before. 
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    The other curve is quite different, more irregular, made by me. This curve will change the values obtained from the noise function significantly. When we have values from 0 to 0.52 the curve will return values near to 1, the values from 0.52 to 0.9 will be around 0.45, and from 0.9 to 1 will fall to 0.3. If we run the example with this curve what we see is a terrain made of cliffs and plains.
+&lt;/p&gt;
+&lt;a href=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/MaDCraft-Cliff.html&quot;&gt;&lt;img src=&quot;/assets/2014-04-26-Procedural-Terrain-Generation/MaDCraft-Cliff-Player.jpg&quot;&gt;&lt;/a&gt;
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    That&#39;s all for now, the next goal should be add some textures to the cubes, figure out how to create a huge map where more than one biome enter to the game and how to deal with the transitions between biomes.
+&lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+				<published>2014-04-26 00:00:00 +0200</published>
+				<link>http://localhost:4000//Procedural-Terrain-Generation</link>
+			</item>
+		
+			<item>
+				<title>Puzzle Bobble (First Unity Project)</title>
+				<description>&lt;div&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        In order to learn something useful to have more opportunities to work in the game industry, I have decided to start doing projects with Unity, so here&amp;#039;s the first. 
+    &lt;/p&gt;
+    &lt;p id=&quot;more&quot;&gt;
+        &lt;!--more--&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        A small imitation of the famous Puzzle Bobble obviously is not perfect, not as well finished as the original, but to start learning Unity3D and gain confidence, has been pretty good.
+    &lt;/p&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Click on the image below to play:
+    &lt;/p&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;a href=&quot;/assets/2014-04-10-Puzzle-Bobble-(First-Unity-Project)/MaDBubbles.html&quot;&gt;&lt;img src=&quot;/assets/2014-04-10-Puzzle-Bobble-(First-Unity-Project)/Puzzle-Bobble-player.jpg&quot;&gt;&lt;/a&gt;
+        &lt;!--    [WP_UnityObject src=&quot;http://www.madowen.es/wp-content/uploads/2014/04/MaDBubbles1.unity3d&quot; altimage=&quot;http://www.madowen.es/wp-content/uploads/2014/04/Puzzle-Bobble-player.jpg&quot; width=&quot;620&quot; height=&quot;465&quot; /]--&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+				<published>2014-04-10 00:00:00 +0200</published>
+				<link>http://localhost:4000//Puzzle-Bobble-(First-Unity-Project)</link>
+			</item>
+		
+			<item>
+				<title>Ray Tracing</title>
+				<description>&lt;p style=&quot;text-align: justify;&quot;&gt;
+    In computer graphics, Ray Tracing is an algorithm for generating 3D images by tracing the path of light through pixels in an image plane and simulating the effects of its encounters with virtual objects, like reflections, refractions, shadows. The algorithm produce a very high degree of visual realism.
+&lt;/p&gt;
+
+
+&lt;p id=&quot;more&quot;&gt;
+    &lt;!--more--&gt;
+&lt;/p&gt;
+
+
+&lt;div&gt;
+    &lt;h2&gt;The algorithm&lt;/h2&gt;
+    &lt;blockquote&gt;
+        &lt;p style=&quot;text-align:justify;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;for each pixel from image&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;create an infinte ray with the camera position and this pixel&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;for each object in the scene&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 80px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;if the ray intersects with the object&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 120px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;if the intersection is infront and the nearest to the camera&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 160px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;paint the pixel with the color at the intersection point&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 80px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;else&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 120px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;paint the pixel with the background color&lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/blockquote&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;Obviously this is a very simplified version of the algorithm, but already helps us to understand how it works.&lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;img class=&quot;alignright&quot; src=&quot;/assets/2013-08-08-Ray-Tracing/800px-Ray_trace_diagram.svg_.png&quot; width=&quot;300&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2013/05/800px-Ray_trace_diagram.svg_.png&quot;&gt;&lt;img class=&quot;alignright size-medium wp-image-151&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/05/800px-Ray_trace_diagram.svg_-300x199.png&quot; alt=&quot;Ray Tracing&quot; width=&quot;300&quot; height=&quot;199&quot; /&gt;&lt;/a&gt;--&gt;As we want to create an image from scratch, we have to loop through each pixel of the image and calculate the color with which will have to paint. To calculate the color for each pixel, we create an infinite ray from the camera position to the pixel, wich will cross the scene intersecting with the elements of the scene, after obtaining all intersections of the ray with the elements of the scene, will save the nearest intersection and is in front the camera (the calculations can give intersections that are behind the camera, if there are elements behind it).
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        Once we have the intersection point, we should paint the pixel with the information about the color that we can obtain from the element surface, else if the ray does not intersect with any element then the pixel will be paint with the background color. At this moment we have two problems, find if the ray intersects with the element of the scene, and what color is the element surface. For now let&#39;s assume that the element surface is red, and see how calculate if a ray intersects some primitive elements.
+    &lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2 style=&quot;text-align: justify;&quot;&gt;Ray&lt;/h2&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+    Knowing the line equation:&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( \vec{r}(t)=p_0 + t \cdot \hat{v} \)&lt;/span&gt;&lt;br&gt;
+        Where:&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( t \) is the distance from \( p_0 \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( p_0 \) is a point of the line&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( \hat{v} \) is the direction of the line&lt;/span&gt;&lt;br&gt;
+        Since \(\vec{r} \) is a vector, we can decompose like:&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( r_x(t)= (p_0)_{x} + t \cdot v_{x} \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\(r_y(t)= (p_0)_{y} + t \cdot v_{y} \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( r_z(t)= (p_0)_{z} + t \cdot v_{z} \)&lt;/span&gt;&lt;br&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        Now that we know this, we can check if our ray intersects some element of our scene. Also, if we want to calculate some features like reflections, refractions and shadows we will need to know the normal of the intersected element.
+    &lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2 style=&quot;text-align: justify;&quot;&gt;Ray vs Plane&lt;/h2&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        An infinite plane is for sure the most simple element that we can intersect with a ray. The plane will give a sense of depth to our image creating the horizon.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-08-08-Ray-Tracing/RT_suelo.jpg&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2013/08/RT_suelo.jpg&quot;&gt;&lt;img class=&quot;aligncenter size-full wp-image-226&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/08/RT_suelo.jpg&quot; alt=&quot;RT_suelo&quot; width=&quot;640&quot; height=&quot;480&quot; /&gt;&lt;/a&gt;--&gt;
+        
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        The equation from a plane is given by a point \( p \) and 2 vectors \( \vec{u} \) and \( \vec{v} \) But in our case we don&#39;t know any point of our infinite plane, but we define it with its &lt;b&gt;normal&lt;/b&gt; \( \hat{N} \) and the distance \( d \) from the camera, so we will use:&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( \vec{p} \cdot \hat{N} = d \)&lt;/span&gt;&lt;br&gt;
+        Where \( \vec{p} \) is the ray. Using the line equation we can say that:&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( (p_0 + t \cdot \hat{v}) \cdot \hat{N} = d \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( p_0 \cdot \hat{N} + t \cdot \hat{v} \cdot \hat{N} = d \)&lt;/span&gt;
+        With every element from the scene we want to isolate the \( t \) variable because is the distance from the origin of the ray to the element if it intersects.&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( t = \dfrac {d - p_0 \cdot \hat{N}}{\hat{v} \cdot \hat{N}} \)&lt;/span&gt;&lt;br&gt;
+        This \( t \) for every element that we calculate can be:
+    &lt;/p&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;Negative: it means that the ray intersects from behind the origin of the element, so it will return a false value and has to be ignored.&lt;/li&gt;
+        &lt;li&gt;Positive: it means that the ray intersects with the element, so it will return a valid value.&lt;/li&gt;
+        &lt;li&gt;Zero: this means that the ray is tangent to the element, so it means that the ray only intersects at one point with the element. This is a valid value except for the plane, which will have infinite points, so it will be ignored.&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        We only need the smaller positive value, so from every \( t \) valid value that we get, we only save the smaller one.
+    &lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2 style=&quot;text-align: justify;&quot;&gt;Ray vs Sphere&lt;/h2&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        Now we have a reference to put the elements. We start with the sphere, which is the simplest of geometric figures.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-08-08-Ray-Tracing/RT_suelo_esfera.jpg&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2013/08/RT_suelo_esfera.jpg&quot;&gt;&lt;img class=&quot;aligncenter size-full wp-image-227&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/08/RT_suelo_esfera.jpg&quot; alt=&quot;RT_suelo_esfera&quot; width=&quot;640&quot; height=&quot;480&quot; /&gt;&lt;/a&gt;--&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        The equation of the sphere centered at the origin of radius R:&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( x^2 + y^2 + z^2 = R^2 \)&lt;/span&gt;&lt;br&gt;
+        Using the line equation we can say that:&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( ((p_0)_{x} + t \cdot v_{x})^2 + ((p_0)_{y} + t \cdot v_{y})^2 + ((p_0)_{z} + t \cdot v_{z})^2=R^2 \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( ((p_0)_{x}^2 + t^2v_{x}^2 + 2t(p_0)_{x}v_{x}) + ((p_0)_{y}^2 + t^2v_{y}^2 + 2t(p_0)_{y}v_{y}) + ((p_0)_{z}^2 + t^2v_{z}^2 + 2t(p_0)_{z}v_{z}) = R^2 \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( t^2(v_{x}^2+v_{y}^2+v_{z}^2) + t(2(p_0)_{x}v_{x} + 2(p_0)_{y}v_{y} + 2(p_0)_{z}v_{z}) + ((p_0)_{x}^2 + (p_0)_{y}^2 + (p_0)_{z}^2 - R^2) = 0 \)&lt;/span&gt;&lt;br&gt;
+        This can be a little confusing, but we can simplify to a known formula that we can solve:
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( at^2 + bt + c = 0 \)&lt;/span&gt;&lt;br&gt;
+        Now we have to solve what we have simplified:&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( a = v_{x}^2+v_{y}^2+v_{z}^2 = 1 \) if \( v \) is normalized.&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( b = 2(2(p_0)_{x}v_{x} + 2(p_0)_{y}v_{y} + 2(p_0)_{z}v_{z}) = 2p_0 \cdot \hat{v} \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( c = (p_0)_{x}^2 + (p_0)_{y}^2 + (p_0)_{z}^2 - R^2 = p_0 \cdot p_0 - R^2 \)&lt;/span&gt;&lt;br&gt;
+        Once we have this solved, we can solve the quadratic equation:&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( t = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a} \)&lt;/span&gt;&lt;br&gt;
+        If first we try to solve the root, we can see 3 cases, where \( D = b^2 - 4ac \):
+    &lt;/p&gt;
+
+    &lt;ul&gt;
+        &lt;li&gt;\( D &amp;lt; 0 \Rightarrow  \) It doesn&#39;t have intersection&lt;/li&gt;
+        &lt;li&gt;\( D = 0 \Rightarrow t = \dfrac{-b}{2a} \)&lt;/li&gt;
+        &lt;li&gt;\( D &amp;gt; 0 \Rightarrow  \) We pick the smaller positive from:
+            &lt;ul&gt;
+                &lt;li&gt;\( t_0 = \dfrac {-b + D}{2a}  \)&lt;/li&gt;
+                &lt;li&gt;\( t_0 = \dfrac {-b - D}{2a}  \)&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        The sphere &lt;b&gt;normal&lt;/b&gt; at the point of intersection is the normalized vector between the point and the center of the sphere.
+    &lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2 style=&quot;text-align: justify;&quot;&gt;Illumination&lt;/h2&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        Now that we know how to calculate if our ray intersects with any element of the scene, and get the point from the element where intersects and its normal at this point if it&#39;s true, we should paint the pixel with the element material color. But like in real life, if something it&#39;s not illuminated by a point of light this won&#39;t be visible, whatever the color of its surface.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;!--&lt;a title=&quot;&quot; href=&quot;http://www.madowen.es/wp-content/uploads/2013/08/Ray-Tracing-1.jpg&quot; target=&quot;&quot; rel=&quot;&quot;&gt;&lt;img class=&quot;size-full wp-image-205 alignleft&quot; title=&quot;&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/08/Ray-Tracing-1.jpg&quot; alt=&quot;Ray Tracing 1&quot; width=&quot;371&quot; height=&quot;163&quot; /&gt;&lt;/a&gt;--&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;img class=&quot;alignleft&quot; src=&quot;/assets/2013-08-08-Ray-Tracing/Ray-Tracing-1.jpg&quot; width=&quot;371&quot;&gt;
+        As we see in the image, the vector \( \vec{E_1} \) comes from the camera and intersects with the red ball at the point \( P_1 \), this point defines a new vector \( \vec{L_1} \) with the light in the scene, the same happens with the vector \( \vec{E_2} \) but in this case \( \vec{L_2} \) intersects with the sphere so this pixel has to be painted as a shadow and not like the first one as the element material color.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        
+        Indeed to know exactly how to paint the element surface we have to take in count some parameters. First a material color is defined by 3 coefficients (Ambient, Diffuse and Specular), also has a level of reflectance, refractance and glossines (the way it shines with a direct light source). The light source also has a color and potential properties.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;!--&lt;a title=&quot;&quot; href=&quot;http://www.madowen.es/wp-content/uploads/2013/08/Ray-Tracing-2-reflection.jpg&quot; target=&quot;&quot; rel=&quot;&quot;&gt;&lt;img class=&quot;size-full wp-image-205 alignleft&quot; title=&quot;&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/08/Ray-Tracing-2-reflection.jpg&quot; alt=&quot;Ray Tracing 2 reflection&quot; width=&quot;371&quot; height=&quot;163&quot; /&gt;&lt;/a&gt;--&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;img class=&quot;alignleft&quot; src=&quot;/assets/2013-08-08-Ray-Tracing/Ray-Tracing-2-reflection.jpg&quot; width=&quot;371&quot;&gt;
+        In this image we see how the reflectance is calculated and how the light is reflected on a surface, knowing that \( ray \) is the ray from the camera to the scene, and \( light \) is the data from a light source in the scene:
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( \hat{E} = -ray.dir \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( \hat{L} = P - light.loc \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( \hat{E_r} = -\hat{E} + 2*\hat{N} \cdot \hat{E} * \hat{N} \)&lt;/span&gt;&lt;br&gt;
+        &lt;span style=&quot;margin-left: 10px&quot;&gt;\( \hat{L_r} = -\hat{L} + 2*\hat{N} \cdot \hat{L} * \hat{N} \)&lt;/span&gt;&lt;br&gt;
+        With this calculations done, we can solve the equation that we will use for the final color of the pixel.  \( C_r = getColor(\hat{E_r}) \) where \( C_r \) is the color of the reflection on the surface.&lt;br&gt;
+        \( C_l = \displaystyle\sum_{i=0}^n (\hat{N} \cdot \hat{L_i} \cdot K_d + (\hat{L} \cdot \hat{E_r})^g \cdot K_s)*C_i  \) where \( C_l \) is the color based on all lights from the scene.&lt;br&gt;
+        As we said before if \( L_i \) intersects with an element in the scene we only add to \( C_l \) the ambient coefficient \( K_a \). And at the end:  \( C_f = C_r + C_l \) where \( C_f \) is the final color on the pixel.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-08-08-Ray-Tracing/RT_billar.jpg&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2013/08/RT_billar.jpg&quot;&gt;&lt;img class=&quot;aligncenter size-full wp-image-228&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/08/RT_billar.jpg&quot; alt=&quot;RT_billar&quot; width=&quot;640&quot; height=&quot;480&quot; /&gt;&lt;/a&gt;--&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        This is how the Ray Tracing should look with some reflections, shadows and different materials. The next image is a level 4 fractal that represents a snowflake made of spheres as the featured image of this post that is a level 2 fractal snowflake.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align: justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-08-08-Ray-Tracing/RT_snowball_4.jpg&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2013/08/RT_snowball_4.jpg&quot;&gt;&lt;img class=&quot;aligncenter size-full wp-image-232&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/08/RT_snowball_4.jpg&quot; alt=&quot;RT_snowball_4&quot; width=&quot;1024&quot; height=&quot;1024&quot; /&gt;&lt;/a&gt;--&gt;
+    &lt;/p&gt;
+    Here is the source code: &lt;a href=&quot;/assets/2013-08-08-Ray-Tracing/RT_-src.zip&quot;&gt;&lt;i class=&quot;icon-download&quot;&gt;&lt;/i&gt;SRC&lt;/a&gt;
+&lt;/div&gt;
+
+</description>
+				<published>2013-08-08 00:00:00 +0200</published>
+				<link>http://localhost:4000//Ray-Tracing</link>
+			</item>
+		
+			<item>
+				<title>Simple Race Game</title>
+				<description>&lt;p style=&quot;text-align:justify;&quot;&gt;
+    In the last quarter of this year in college, I am studying Interactive Systems. In this course we started working with OpenFrameworks, which is nothing more than a framework that makes it easy to use OpenGL and development of 2D and 3D Applications. The first project that we are developing is a 2D multiplayer racing game.
+&lt;/p&gt;
+
+
+
+
+&lt;p&gt;
+    &lt;!--more--&gt;
+&lt;/p&gt;
+
+
+
+
+&lt;div&gt;
+    &lt;h2&gt;
+       Framework
+   &lt;/h2&gt;
+
+   &lt;p style=&quot;text-align:justify;&quot;&gt;
+       First we have to download from &lt;a href=&quot;http://www.openframeworks.cc/download/&quot;&gt;OpenFrameworks&lt;/a&gt; website the latest release for the IDE we use, in this case we use Code Blocks. Once downloaded and unzipped wherever you want, go to the folder /apps/myApps/emptyExample, there you will find what you need to start immediately. If we open the file emptyExample.workspace with Code Blocks, we can see 3 files created in the folder /src.
+   &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;#include &amp;quot;testApp.h&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;#include &amp;quot;ofAppGlutWindow.h&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//--------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofAppGlutWindow&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// create a window&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// set width, height, mode (OF_WINDOW or OF_FULLSCREEN)&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofSetupOpenGL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;768&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OF_WINDOW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofRunApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// start the app&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        In the main.cpp file, basically is created a window with the dimensions in which the game will run. Once created the application runs.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;#pragma once&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;#include &amp;quot;ofMain.h&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;testApp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofBaseApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;keyPressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;keyReleased&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mouseMoved&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mouseDragged&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mousePressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mouseReleased&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;windowResized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dragEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofDragInfo&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dragInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gotMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofMessage&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        In the testApp.h, we can see the basis for every application, and some key, mouse and windows events.&lt;br /&gt;
+        The setup() method, sets all the elements of the application, this method will only be called at the beginning of the application. &lt;br /&gt;
+        The update() method, updates all the elements of the application, this method will be called in every iteration of the application. &lt;br /&gt;
+        The draw() method, draw all the elements of the application for the next frame that is going to show at screen, this method will be called after every update().
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofEnableAlphaBlendhighlighting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// We set the application to run at 60 FPS.&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofSetFrameRate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        At setup(), enable Alpha Blendhighlighting for rendhighlightering with transparency, here what oF does is call glEnable(GL_BLendhighlight); to rise OpenGL Blengin flag; and set the frame rate at 60FPS. Later we&amp;#039;ll see what objects we set up, we must first create them.&lt;br /&gt;
+        For the moment, the methods update() and draw() are empty. We could paint the window background in white or black (or whatever we wanted) using ofBackground(r,g,b);
+    &lt;/p&gt;
+
+    &lt;h2&gt;
+        Car
+    &lt;/h2&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Once we have an area to play, we need a toy. As we saw at class testApp, we create a new class with the 3 basic methods, setup(), update() and draw(), and some necessary attributes.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Car&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// We declare the basic methods for the class.&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;Car&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Car&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//GETERS &amp;amp; SETERS//&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofPoint&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;car_position_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;car_rotation_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;car_speed_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;texture_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;car_width_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;car_height_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        We give values ​​to the setup() to configure the car. Setting the initial position (x,y) in the window and the texture size of the car (width,height), and the initial speed as 0 (we don&amp;#039;t want the car run like crazy) and rotation to where it should be aimed initially in degrees (45&amp;ordm; = diagonal up-right)..&lt;br /&gt;
+        These data will be stored in the attributes of the class, in addition to the car&amp;#039;s speed, the rotation and its texture.&lt;br /&gt;
+        To modify all attributes also implement their getters and setters. With the only difference set_texture(), which will load the texture in memory.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Car&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_texture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;texture_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;texture_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loadImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img class=&quot;alignright&quot; src=&quot;/assets/2013-07-21-Simple-Race-Game/rotation.png&quot; width=&quot;150&quot; height=&quot;150&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2013/04/rotation.png&quot; rel=&quot;&quot; style=&quot;font-size:13px;text-align:justify;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;rotation&quot; class=&quot;alignright size-full wp-image-103&quot; height=&quot;150&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/04/rotation.png&quot; title=&quot;Rotation calc&quot; width=&quot;155&quot; /&gt;&lt;/a&gt;--&gt; Now that we have set the car, we have to make it move. To calculate the position in the next frame, which must be the car when in motion, we will consider the current position, rotation, and the speed at which the car moves.&lt;br&gt;
+        First we calculate the direction in which we should move, using the cosine and sine of the car&amp;#039;s rotation, it will provide us a unit vector (length = 1) which will be multiplied by the car&amp;#039;s speed to get the distance advanced in the cycle. And we will add to the current position.&lt;br&gt;
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Car&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//cos() and sin() works in radians, so we have to transform degree-&amp;gt;;radian&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofVec2f&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_rotation_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_rotation_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_position&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;car_position_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_speed_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;car_position_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        The dt component, is the delta-time that is to correct the frame rate fluctuation.
+    &lt;/p&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Once we know what position should be the car when moving, we have to draw it on the screen. To do this, we will move the object in the 2D world, translating to the position that we calculated before, and also rotating to aim according to need.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Car&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofPushMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofTranslate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_position_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_position_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;//translate to correct position&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofTranslate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_width_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_height_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;//move to the texture center&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofRotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_rotation_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;                  &lt;span class=&quot;c1&quot;&gt;//rotate to correct orientation&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofTranslate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_width_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_height_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;//return to correct position&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;texture_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_width_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_height_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//draw the texture&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofPopMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2&gt;
+       Scenario
+   &lt;/h2&gt;
+
+   &lt;p style=&quot;text-align:justify;&quot;&gt;
+       What would be a racing game without a track where to compete? As each class in the class Scenario, we define the 3 basic methods, in addition to its attributes and functions needed for the class.
+   &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// Declaration of the basic methods for the scenario class.&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//GETERS &amp;amp; SETERS//&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;             &lt;span class=&quot;n&quot;&gt;scenario_array_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;trees_vector_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;              &lt;span class=&quot;n&quot;&gt;scenario_width_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;              &lt;span class=&quot;n&quot;&gt;scenario_height_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;tile_width_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;tile_height_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        The texture array stores all different tiles to draw the track, the scenario array gives shape to the track with the indices from the texture array, also we define a vector to draw some trees. The width and height atributes are given by the number of tiles that fill the screen, it will have width*height tiles. And it is necessary set the width and height of the tiles.&lt;br /&gt;
+        At the constructor, we reserve the space in memory for the instantiation of the class.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;malloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;scenario_width_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;scenario_height_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;tile_width_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofGetWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scenario_width_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;tile_height_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofGetHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scenario_height_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;scenario_array_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;malloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scenario_width_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scenario_height_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        We allocate memory for 7 different tiles to draw the track, which will have 8*6 tiles. To draw the tiles so that they fill 100% of the screen, we divide the width of the screen by the number of tiles widthwise, and the same for the height. And finally allocate memory for 8*6 indices that will define the shape of the track.&lt;br /&gt;
+        With the allocated memory, we load the textures and set the scenario in the setup() method.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// Just for loading purposes we print by console when we start loading the scenario.&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;LOADING SCENARIO&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;SCENARIO: LOADING TILES IMAGES&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loadImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;track/grass.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loadImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;track/racing_curve_1.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loadImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;track/racing_curve_2.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loadImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;track/racing_curve_3.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loadImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;track/racing_curve_4.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loadImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;track/racing_road_vert.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;19&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;20&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loadImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;track/racing_road_hor.jpg&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;21&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;22&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loadImage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;track/Tree.png&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;23&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;24&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;trees_vector_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;187&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;441&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;25&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;trees_vector_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;221&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;307&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;26&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;trees_vector_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;563&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;226&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;27&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;trees_vector_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;509&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;595&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;28&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;trees_vector_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;903&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;229&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;29&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;trees_vector_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofPoint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;755&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;364&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;30&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;31&lt;/span&gt;     &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;       &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;32&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;33&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;34&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;35&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;36&lt;/span&gt;     &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;37&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;memcpy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scenario_array_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;38&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        First we load the 7 different tiles for later drawing the scenario given by the scenario array. The sequence to load the images are used for indices that we use in the scenario array. Will place the trees in different positions of the screen. Initialize the scenario with 8*6 indices, according to the tiles we want to use to shape the track. (I&amp;#039;m copying from temp to scenario_array because an int* can&amp;#039;t be initialized as a list)
+    &lt;/p&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-07-21-Simple-Race-Game/SRC-Tiles.jpg&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2013/04/SRC-Tiles.jpg&quot;&gt;&lt;img alt=&quot;SRC - Tiles&quot; class=&quot;aligncenter size-full wp-image-134&quot; height=&quot;120&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/04/SRC-Tiles.jpg&quot; width=&quot;959&quot; /&gt;&lt;/a&gt;--&gt;
+    &lt;/p&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        As the scenario represents the track where cars run, and it is an inanimate object, that will not change over time, the update() method will be empty.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Scenario&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// We set the color to draw at pure white.&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofSetColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scenario_height_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scenario_width_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;             &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tile_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scenario_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scenario_width_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;             &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tile_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tile_width_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tile_height_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tile_width_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tile_height_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iterator&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;trees_vector_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;trees_vector_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endhighlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;ofPushMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;ofTranslate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;15&lt;/span&gt;         &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texture_array_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tile_width_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tile_height_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;16&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;ofPopMatrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;17&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;18&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        In the draw() method has to loop the scenario array to get wich texture should be rendhighlighter, then draw it in the expected position. To draw the tree we iterate over the tree vector using an iterator to go through, iterators tendhighlight to be the most efficient way to search through a data container. For each position we do a push and popMatrix() so the call to ofTranslate() will not affect the posterior rendhighlighter in the game loop. By calling the ofTranslate(), we can pass as x and y arguments to ofImagen().draw() the values 0, 0.
+    &lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2&gt;
+       Gameplay &amp;amp; Fixes
+   &lt;/h2&gt;
+
+   &lt;p style=&quot;text-align:justify;&quot;&gt;
+       Now that we have ready the Scenario and Car classes, we should add them to the framework and initialize in the setup() method of the testApp class. We only need one instance of Scenario, but we could need more than one car if we want to play with friendhighlights, so they will be instantiated in an array of Car.&lt;br /&gt;
+       The initialization is quite simple, just call the setup() method of the scenario and the cars, passing to each car its initial position and size of the texture.
+   &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scenario_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cars_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;120&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;37.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cars_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_texture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;cars/Red.png&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img class=&quot;alignright&quot; src=&quot;/assets/2013-07-21-Simple-Race-Game/Red.png&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2013/04/Red.png&quot;&gt;&lt;img alt=&quot;Red&quot; class=&quot;alignright size-full wp-image-136&quot; height=&quot;98&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/04/Red.png&quot; title=&quot;Red&quot; width=&quot;127&quot; /&gt;&lt;/a&gt;--&gt;Right now, if we draw the scenario and cars in the method draw () and run the project, we have running our game, but we can not move the car. In order for the car move using the keyboard, we need to capture the event that happens when any key is pressed and when is released. The framework has already implemented these methods, but we have to tell them what to do when a button is pushed and released.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keyPressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;key_Pressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keyReleased&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;key_Pressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Quite simple, we store a boolean array wich key was pressed or not, using as index the int value of the key. Doing this way, we can press more than one key at the time.&lt;br /&gt;
+        Now that we have the keys pressed or not, the game has to tell the car what to do on every frame for each key pressed.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt; 1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 2&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_Pressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//Up&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 3&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;cars_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_accelerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 4&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_Pressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//Left&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 5&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;cars_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_turn_left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 6&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_Pressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//Right&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 7&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;cars_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_turn_right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 8&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_Pressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//Down&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt; 9&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;cars_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_reverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;10&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_Pressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_Pressed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sc&quot;&gt;&amp;#39;s&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//If the accelerating and reverse button are not pressed, the car breaks&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;11&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;cars_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;12&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;13&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;cars_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Since for each frame we want the car to move, we will check in the update() if keys are pressed to move the car. Also if we want that when we do not press any key the car breaks, we have to check that the keys to accelerate and reverse are not pressed. The methods we use are pretty obviuos, accelerate, break and reverse increments or decrements the car speed atribute, and turn_right and turn_left increments or decrements the car rotation atribute. 
+    &lt;/p&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Now that we can move our car across the scenario, problems arise. The most important thing to fix is the fact that we can get out of the screen. To fix that exists an OpenFramework method that returns true if a value is between a range, we use this method to check if our car will be outside the screen when we update its position, if it is true it won&#39;t move to the new position. This check has to be done every time that we want to move our car, so we add it at car&#39;s update() method.
+    &lt;/p&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;lineno&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Car&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;2&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofVec2f&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_rotation_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_rotation_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;180&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//cos() and sin() works in radians&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;3&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;ofPoint&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_point&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;car_position_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_speed_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;4&lt;/span&gt; 
+&lt;span class=&quot;lineno&quot;&gt;5&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;//The position is only setted if we are on the limits of the scenario&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;6&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofInRange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofGetWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_width_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ofInRange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ofGetHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;car_height_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;7&lt;/span&gt;         &lt;span class=&quot;n&quot;&gt;car_position_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new_point&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;lineno&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        From this point that we already have implemented the basic elements of game, simply must be added features like controlling the car goes through all the tiles forming the track, or when the car moves by the grass tiles, the speed is reduced, and even control the collisions between cars and trees.
+    &lt;/p&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-07-21-Simple-Race-Game/SRC-Track.jpg&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2013/04/SRG-Track.jpg&quot; rel=&quot;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;SRG - Track&quot; class=&quot;aligncenter size-full wp-image-138&quot; height=&quot;722&quot; src=&quot;http://www.madowen.es/wp-content/uploads/2013/04/SRG-Track.jpg&quot; title=&quot;SRG - Track&quot; width=&quot;963&quot; /&gt;&lt;/a&gt;--&gt;
+    &lt;/p&gt;
+
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Here you have the source code. &lt;a href=&quot;/assets/2013-07-21-Simple-Race-Game/Simple-Race-Game-src.zip&quot;&gt;&lt;i class=&quot;icon-download&quot;&gt;&lt;/i&gt;SRG - src&lt;/a&gt;&lt;br /&gt;
+        Here you have the textures used and some extras. &lt;a href=&quot;/assets/2013-07-21-Simple-Race-Game/data.zip&quot;&gt;&lt;i class=&quot;icon-download&quot;&gt;&lt;/i&gt;SRG - Tiles&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+				<published>2013-07-21 00:00:00 +0200</published>
+				<link>http://localhost:4000//Simple-Race-Game</link>
+			</item>
+		
+			<item>
+				<title>Game Engine</title>
+				<description>&lt;div&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        This graphics engine is the biggest project I&amp;#039;ve developed on graphical programming. Further on, I will try to explain more extensively the structure used for development, the use of each part of the structure and why I chose that structure and not another.
+    &lt;/p&gt;
+    &lt;p&gt;
+        For now, here&amp;#039;s a video demonstration.
+    &lt;/p&gt;
+    &lt;p id=&quot;more&quot;&gt;
+        &lt;!--more--&gt; 
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;iframe width=&quot;560&quot; height=&quot;420&quot; src=&quot;http://www.youtube.com/embed/GQ8dn_gsu88?color=white&amp;theme=light&quot;&gt;&lt;/iframe&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Here is the source code: &lt;a href=&quot;/assets/2013-06-18-Game-Engine/src.zip&quot;&gt;&lt;i class=&quot;icon-download&quot;&gt;&lt;/i&gt;SRC&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+				<published>2013-06-18 00:00:00 +0200</published>
+				<link>http://localhost:4000//Game-Engine</link>
+			</item>
+		
+			<item>
+				<title>Octree + Ray Collision</title>
+				<description>&lt;p style=&quot;text-align:justify;&quot;&gt;
+    Nowadays in applications that work with 3D graphical environments require monitoring the collision between meshes with lots of triangles, so that the computational cost of checking all triangles of both meshes would be too high.
+&lt;/p&gt;
+
+
+&lt;p id=&quot;more&quot;&gt;
+    &lt;!--more--&gt;
+&lt;/p&gt;
+
+
+&lt;p style=&quot;text-align:justify;&quot;&gt;
+    To solve this problem, it&amp;#039;s posible to divide the triangles of the mesh in areas, so we will have a smaller amount of triangles to check for each sector. This creates a data structure in a tree, in which the father wraps to subsectors children. This distribution of data also can be applied in both 2D (Quadtree) and 3D (Octree).
+&lt;/p&gt;
+
+
+&lt;div&gt;
+    &lt;h2&gt;
+        2D Quadtree
+    &lt;/h2&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Before starting to explain how a Octree works, you must understand how a Quadtree works and how is generated its tree.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        In fact what a quadtree and octree they do is distribute the vertices between their children, then the triangles are distributed according to where they are situated its vertices.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        First of all the vertices are distributed on the parent node (Node 0), as seen in the image, the nodes are within the black square.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-05-24-Octree-+-Ray-Collision/Quadtree.gif&quot;&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Once the vertices have spread over the parent node is divided into subsectors alike. Since this is a 2D case, will be divided between two coordinates X and Y creating 4 new subsectors.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        For each new node that has been created, will distribute the vertices of the parent node in the child nodes, so that the parent node runs out vertices.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Understand this, we repeat the same process recursively. The process is repeated for the child nodes until it finds a node that has zero or one vertex, or up to the specified maximum depth.
+    &lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2&gt;
+        3D Octree
+    &lt;/h2&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Now that we know how a Quadtree for 2D environments works, implement an Octree for 3D environments follows the same process.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        First, the vertices and the triangles from the mesh are added to the Octree al level 0 and calculates its Bounding Box (a Bounding Box is the minimum sized box that can hold all the vertices).
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-05-24-Octree-+-Ray-Collision/Octree.gif&quot;&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Now that Node 0 has the vertices, it must generate the child nodes. To divide the area it Node 0 (the bounding box), as in the quadtree which was divided by half in two dimensions, for Octree as it is 3D will divide into three dimensions. This will generate 8 new child nodes, which are Octrees, and will distribute the vertices and the triangles of the parent node to them.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+    &lt;img src=&quot;/assets/2013-05-24-Octree-+-Ray-Collision/Octree-all-nodes.jpg&quot;&gt;
+    &lt;!--&lt;a href=&quot;http://madowen.es/wp-content/uploads/2013/04/Octree-all-nodes.jpg&quot; rel=&quot;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;Octree - all nodes&quot; class=&quot;size-full wp-image-52 aligncenter&quot; height=&quot;350&quot; src=&quot;http://madowen.es/wp-content/uploads/2013/04/Octree-all-nodes.jpg&quot; title=&quot;Octree - all nodes&quot; width=&quot;963&quot; /&gt;&lt;/a&gt;--&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        After that, simply repeat the process for the child nodes, and the child nodes of the child nodes recursively, until you reach the maximum depth or the node has no vertices.
+    &lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2&gt;
+        Ray Collision
+    &lt;/h2&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        One of the most widely used tests in the development of 3D environments, is the Ray Collision. This check has different uses.
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li style=&quot;text-align:justify;&quot;&gt;
+            &lt;strong&gt;Ray Picking&lt;/strong&gt;: Clicking on the screen with the mouse, draws a ray from the camera to the point at the world for the screen, if the ray collides with an object, it will be selected.
+        &lt;/li&gt;
+        &lt;li style=&quot;text-align:justify;&quot;&gt;
+            &lt;strong&gt;Ray Tracing&lt;/strong&gt;: Is a technique for generating an image by tracing the path of light through pixels in an image plane and simulating the effects of its encounters with virtual objects. Tracing a ray from the camera for each screen pixel is calculated if it collides with an object. In case of a collision with an object, you paint the pixel on the screen with the information of the surface that has collided.
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-05-24-Octree-+-Ray-Collision/Octree-Ray-Collision-1.jpg&quot;&gt;
+        &lt;!--&lt;a href=&quot;http://madowen.es/wp-content/uploads/2013/04/Octree-Ray-Collision-1.jpg&quot; rel=&quot;&quot; style=&quot;line-height:1.6em;&quot; target=&quot;&quot; title=&quot;&quot;&gt;&lt;img alt=&quot;Octree - Ray Collision 1&quot; class=&quot;alignnone size-full wp-image-59&quot; height=&quot;350&quot; src=&quot;http://madowen.es/wp-content/uploads/2013/04/Octree-Ray-Collision-1.jpg&quot; title=&quot;Octree - Ray Collision&quot; width=&quot;963&quot; /&gt;&lt;/a&gt;--&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        To optimize checking if a ray collides with a mesh in the world, you can use Octrees. If an octree is not used, it should check whether the ray collides with all the triangles of the mesh. On the other hand using Octree, it should check whether the ray collides with at most 8xN Bounding Boxes, where N is the maximum depth of the Octree. And once reached the maximum depth, check if the ray intersects any of the triangles contained in the node.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+    &lt;iframe width=&quot;560&quot; height=&quot;420&quot; src=&quot;http://www.youtube.com/embed/hxLTe-twNb0?color=white&amp;theme=light&quot;&gt;&lt;/iframe&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Here is the source code: &lt;a href=&quot;/assets/2013-05-24-Octree-+-Ray-Collision/Octree-src.zip&quot;&gt;&lt;i class=&quot;icon-download&quot;&gt;&lt;/i&gt;SRC&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+				<published>2013-05-24 00:00:00 +0200</published>
+				<link>http://localhost:4000//Octree-+-Ray-Collision</link>
+			</item>
+		
+			<item>
+				<title>QuickHull 3D</title>
+				<description>&lt;p style=&quot;text-align:justify;&quot;&gt;
+    At the Computational Geometry course I have implemented the Quickhull algorithm for its application in 3D, following the paper &lt;em&gt;&amp;quot;Barber, C. B., Dobkin, D. P., &amp;amp; Huhdanpaa, H. T. (1996). The Quickhull algorithm for convex hulls. ACM Trans. on Mathematical Software, 22(4), 469&amp;mdash;483&amp;quot;.&lt;/em&gt; And following the example of &lt;a href=&quot;http://www.cse.unsw.edu.au/~lambert/java/3d/hull.html?dimension=3D&amp;amp;model=QuickHull&amp;amp;seed=45123&amp;amp;npoints=20&amp;amp;frame=11&amp;amp;view=v[0.55695075,-0.051542707,-0.8289446]&quot; target=&quot;_blank&quot; title=&quot;QuickHull&quot;&gt;this java applet&lt;/a&gt; developed by UNSW School of Computer Science and Engineering.
+&lt;/p&gt;
+
+
+&lt;p id=&quot;more&quot;&gt;
+    &lt;!--more--&gt; 
+&lt;/p&gt;
+
+
+&lt;div&gt;
+    &lt;h2&gt;
+        &lt;strong&gt;Algorithm&lt;/strong&gt;
+    &lt;/h2&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        The algorithm proposed by the paper says:
+    &lt;/p&gt;
+    &lt;blockquote&gt;
+        &lt;p style=&quot;text-align:justify;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;create a simplex of &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;d&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;+1 points&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;text-align:justify;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;for each facet &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;F&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;for each unassigned point &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;p&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 80px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;if &lt;/span&gt;&lt;i style=&quot;font-family: georgia, serif;&quot;&gt;p&lt;/i&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; is above &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;F&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 120px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;assign &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;p&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; to &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;F&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;&amp;#39;s outside set&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;text-align:justify;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;for each facet &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;F&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; with a non-empty outside set&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;select the furthest point &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;p&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; of &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;F&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;&amp;#39;s outside set&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;initialize the visible set &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;V &lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;to &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;F&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;for all unvisited neighbors &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;N&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; of facets in &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;V&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 80px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;if &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;p&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; is above &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;N&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 120px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;add &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;N&lt;/em&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt; &lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;to &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;V&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;the boundary of &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;V&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; is the set of horizon ridges &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;H&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;for each ridge &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;R&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; in &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;H&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 80px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;create a new facet from &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;R&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; and &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;p&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 80px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;link the new facet to its neighbors&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;for each new facet &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;F&amp;#39;&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 80px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;for each unassigned point &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;q&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; in an outside set of a facet in &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;V&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 120px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;if &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;q&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt; is above &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;F&amp;#39;&lt;/em&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 160px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;assign &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;q &lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;to &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;F&amp;#39;&lt;/em&gt;&lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;&amp;#39;s outside set&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p style=&quot;margin-left: 40px;&quot;&gt;
+            &lt;span style=&quot;font-family: georgia, serif; font-style: italic;&quot;&gt;delete the facets in &lt;/span&gt;&lt;em style=&quot;font-family: georgia, serif;&quot;&gt;V&lt;/em&gt;
+        &lt;/p&gt;
+    &lt;/blockquote&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        I made some changes on my implementation but the essence is the same.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-04-13-QuickHull-3D/quickhull-initial.jpg&quot;&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2&gt;
+        &lt;strong&gt;Data Structures&lt;/strong&gt;
+    &lt;/h2&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Before explaining the implementation, it should explain how are the data structures.
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li style=&quot;text-align: justify;&quot;&gt;
+            &lt;code&gt;vector3f &lt;/code&gt;is a 3 &lt;code&gt;float &lt;/code&gt;vector with some geometrical functions (dotProduct, crossProduct, etc...)
+        &lt;/li&gt;
+        &lt;li style=&quot;text-align: justify;&quot;&gt;
+            &lt;code&gt;facet &lt;/code&gt;is a 3 &lt;code&gt;int &lt;/code&gt;vector and a &lt;code&gt;std::Vector&amp;lt;int&amp;gt;&lt;/code&gt;, to store the indices of the 3 points of the triangle and the indices of the outside points.
+        &lt;/li&gt;
+        &lt;li style=&quot;text-align: justify;&quot;&gt;
+            All the collection used are class &lt;code&gt;std::Vector&lt;/code&gt;
+        &lt;/li&gt;
+        &lt;li style=&quot;text-align: justify;&quot;&gt;
+            The QuickHull class has:
+            &lt;ul&gt;
+                &lt;li&gt;
+                    A points collection is a &lt;code style=&quot;line-height: 1.6em;&quot;&gt;std::Vector &amp;lt;vector3f&amp;gt;&lt;/code&gt;, where there are stored all the points. This should not be changed any time.
+                &lt;/li&gt;
+                &lt;li&gt;
+                    A facets collection is a &lt;code style=&quot;line-height: 1.6em;&quot;&gt;std::Vector &amp;lt;facet&amp;gt;&lt;/code&gt;, where there are stored all the facets.
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;h2&gt;
+        &lt;strong&gt;Implementation&lt;/strong&gt;
+    &lt;/h2&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        The first thing to do is calculate the simplex. The simplex is a triangle that separates points in two areas. This will take 3 points, two with maximum X and Y coordinate, and another with the minimum Z coordinate of the whole set of points.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-04-13-QuickHull-3D/quickhull-simplex.jpg&quot;&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        After the simplex is created, split the remaining points that are visible for the two facets from the simplex (a triangle in 3D has 2 faces). To know if a point is visible for a facet, we have to calculate if this point is above the facet. And to know if a point is above a plane, we evaluate the point on the plane normal.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Now the main loop begins. In each iteration and for each facet, the facet&amp;#39;s furthest point is calculated. This point &lt;em style=&quot;font-size: 13px;&quot;&gt;p&lt;/em&gt; is checked whether is visible from the facets neighbourhood, the neighbourhood facets are the ones that have at least one vertex in common, then all ridges and outside points from the neighbourhood facets are saved in different collections.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        The ridge collection determine the boundary from the hole that is created when the neighbourhood facets are deleted. Using this boundary and the furthest point &lt;em style=&quot;font-size: 13px;&quot;&gt;p&lt;/em&gt; will create new triangles using the Delaunay algorithm. 
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Finally once created the new triangles will split the points of collection points on the new triangles created. This loop is executed while there are facets with outside points.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        &lt;img src=&quot;/assets/2013-04-13-QuickHull-3D/quickhull-final.jpg&quot;&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+
+
+&lt;div&gt;
+    &lt;h2&gt;
+        &lt;strong&gt;Solved Facts&lt;/strong&gt;
+    &lt;/h2&gt;
+    &lt;h3&gt;
+        &lt;strong&gt;Triangle orientation&lt;/strong&gt;
+    &lt;/h3&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        One of the problems that can happen when you are adding new triangles on a closed polygon, is that according to the order of the vertices of the triangles, the normal of the triangle is pointing inside the polygon. This is a problem because to perform calculations to find the location of the points on the triangle requires that the normal is facing outside the polygon.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        The solution implemented, was using a reference point. This point must always remain within the polygon, even in the first iteration. Therefore, is calculated the baricenter of the initial simplex.
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+    &lt;iframe width=&quot;560&quot; height=&quot;420&quot; src=&quot;http://www.youtube.com/embed/9Nx3GaHteCc?color=white&amp;theme=light&quot;&gt;&lt;/iframe&gt;
+    &lt;/p&gt;
+    &lt;p style=&quot;text-align:justify;&quot;&gt;
+        Here is the source code: &lt;a href=&quot;http://www.madowen.es/wp-content/uploads/2014/01/QuickHull-src.zip&quot;&gt;&lt;i class=&quot;icon-download&quot;&gt;&lt;/i&gt;SRC&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/div&gt;
+
+</description>
+				<published>2013-04-13 00:00:00 +0200</published>
+				<link>http://localhost:4000//QuickHull-3D</link>
+			</item>
+		
+	</channel>
+</rss>

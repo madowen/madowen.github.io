@@ -1,0 +1,12 @@
+aside#sidebar { 
+    width: 23%; 
+    float:right; 
+}
+aside#sidebar img{
+    width: 100%;
+}
+
+aside#sidebar p{
+    text-align: justify;
+    width: 100%;
+}
