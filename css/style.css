@@ -60,7 +60,14 @@ code {
 table {
     border: none;
 }
-
+table.cv, tr.cv, td.cv {
+    border-collapse: collapse;
+    border: 1px solid white;
+}
+td.cv{
+    padding-left: 10px;
+    padding-right: 10px;
+}
 td {
     padding-left: 20px;
 }
