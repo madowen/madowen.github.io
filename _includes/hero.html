@@ -1,5 +1,6 @@
 <!-- home hero section -->
 <div class="jumbotron" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="section-inner">
     <img class="hero-avatar" src="{{ '/assets/img/profile.jpg' | relative_url }}" alt="{{ site.author }}" width="160" height="160">
     <h1 class="jumbotron-heading">{{ site.author }}</h1>
@@ -10,3 +11,14 @@
     </div>
   </div>
 </div>
+
+<script>
+(function(){
+  var bg=document.querySelector('.jumbotron .hero-bg');
+  if(!bg||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var ticking=false;
+  function update(){bg.style.transform='translate3d(0,'+(window.scrollY*0.4)+'px,0)';ticking=false;}
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
+  update();
+})();
+</script>
