@@ -1,0 +1,8 @@
+<dl class="skills-list">
+  {% for skill in site.author_skills %}
+  <div class="skill-row">
+    <dt>{{ skill.label }}</dt>
+    <dd>{{ skill.items }}</dd>
+  </div>
+  {% endfor %}
+</dl>

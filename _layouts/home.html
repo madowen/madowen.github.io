@@ -1,0 +1,42 @@
+---
+layout: default
+---
+{%- include hero.html -%}
+
+<section id="about" class="home-section">
+  <div class="section-inner">
+    <h2 class="section-title">About</h2>
+    <p class="about-text">{{ site.author_bio }}</p>
+  </div>
+</section>
+
+{% if site.show_author_project_details %}
+<section id="work" class="home-section">
+  <div class="section-inner">
+    <h2 class="section-title">Featured Work</h2>
+    <div class="project-grid">
+      {% for project in site.author_project_details %}
+        {% if project.visibility %}{% include project_card.html project=project %}{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section id="skills" class="home-section">
+  <div class="section-inner">
+    <h2 class="section-title">Skills</h2>
+    {%- include author_skills.html -%}
+  </div>
+</section>
+
+<section id="contact" class="home-section">
+  <div class="section-inner">
+    <h2 class="section-title">Contact</h2>
+    <p class="contact-text">Email: <a href="mailto:{{ site.author_email }}">{{ site.author_email }}</a></p>
+    <a class="btn btn-teal" href="mailto:{{ site.author_email }}">Contact</a>
+    {% if site.github_username %}
+    <p class="contact-social"><a href="https://github.com/{{ site.github_username }}"><i class="fab fa-github"></i> github.com/{{ site.github_username }}</a></p>
+    {% endif %}
+  </div>
+</section>

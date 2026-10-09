@@ -1,0 +1,182 @@
+/* Alex Catalán overrides on top of devlopr-jekyll: dark theme with teal accents */
+$bg: #0F1416;
+$card: #172024;
+$text: #E6ECEE;
+$muted: #9AA7AB;
+$accent: #2FA3B5;
+$button: #0B5C6B;
+$max: 960px;
+
+html, html[data-theme="dark"], html[data-theme="light"] {
+  --bold-color: #{$text};
+  --main-background-color: #{$bg};
+  --main-text-color: #{$text};
+  --medium-text-color: #{$muted};
+  --light-text-color: #{$muted};
+  --link-color: #{$accent};
+  --nav-color: #{$bg};
+  --nav-link-color: #{$muted};
+  --card-background-color: #{$card};
+  --social-link-color: #{$text};
+  --button-background-color: #{$button};
+  color-scheme: dark;
+}
+
+body {
+  font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 17px;
+  line-height: 1.6;
+  font-variant-numeric: normal;
+  padding-top: 56px;
+  overflow-y: auto;
+}
+h1, h2, h3, h4, h5, h6 { font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif; }
+a:hover, a:focus { color: #5BC0CF !important; }
+ol, ul { margin-left: 0 !important; }
+::-webkit-scrollbar-track { background: $bg; }
+::-webkit-scrollbar-thumb { background: $card; }
+
+/* Navbar */
+#topNav {
+  padding: 10px 24px;
+  box-shadow: 0 1px 0 rgba(230, 236, 238, 0.06);
+  background-color: rgba(15, 20, 22, 0.94) !important;
+}
+.navbar-dark .navbar-brand { color: $text !important; font-weight: 900; letter-spacing: 0.01em; }
+.navbar-dark .navbar-nav .nav-link { color: $muted !important; font-weight: 700; font-size: 0.95rem; }
+.navbar-dark .navbar-nav .nav-link:hover { color: $accent !important; }
+#progress-bar {
+  background: linear-gradient(to right, $accent var(--progress), transparent 0);
+  height: 3px;
+  margin-top: 0;
+  top: 0;
+  z-index: 1031;
+}
+
+.main-container { margin: 0 auto !important; width: 100% !important; max-width: none !important; padding: 0 !important; }
+.section-inner { max-width: $max; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.jumbotron {
+  background: $bg !important;
+  text-align: left;
+  margin: 0;
+  padding: 120px 0 80px !important;
+  border-radius: 0;
+}
+.jumbotron-heading {
+  font-size: clamp(2.6rem, 7vw, 4.2rem) !important;
+  font-weight: 900;
+  line-height: 1.05;
+  margin: 0 0 16px;
+  color: $text !important;
+}
+.hero-headline { color: $accent; font-size: 1.2rem; font-weight: 700; margin: 0 0 20px; }
+.jumbotron .lead { color: $muted !important; font-size: 1.15rem !important; font-weight: 400; max-width: 720px; margin: 0 0 32px; }
+.jumbotron-btns { margin-top: 0; }
+
+.btn-teal, a.btn-teal {
+  display: inline-block;
+  background: $button;
+  color: #fff !important;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: 6px;
+  border: 0;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.btn-teal:hover, .btn-teal:focus { background: #0E7184; color: #fff !important; text-decoration: none; transform: translateY(-1px); }
+
+/* Sections */
+.home-section { padding: 56px 0; border-top: 1px solid rgba(230, 236, 238, 0.06); }
+.section-title {
+  font-size: 0.85rem !important;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $accent !important;
+  margin: 0 0 24px;
+}
+.about-text, .contact-text { max-width: 760px; font-size: 1.08rem; margin: 0 0 20px; }
+.contact-social { margin-top: 20px; font-size: 0.95rem; }
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+.card.project-card {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.project-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: #0b1012;
+  overflow: hidden;
+}
+.project-media img { width: 100%; height: 100%; object-fit: cover; opacity: 0.92; transition: transform 0.3s ease, opacity 0.3s ease; }
+.project-media:hover img { transform: scale(1.03); opacity: 1; }
+.project-media .play {
+  position: absolute; left: 50%; top: 50%;
+  width: 64px; height: 64px; margin: -32px 0 0 -32px;
+  border-radius: 50%;
+  background: rgba(11, 92, 107, 0.92);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.project-media .play::after {
+  content: ""; position: absolute; left: 25px; top: 20px;
+  border-style: solid; border-width: 12px 0 12px 20px;
+  border-color: transparent transparent transparent #fff;
+}
+.project-media.placeholder {
+  display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px;
+  background: linear-gradient(135deg, #3a1210 0%, #1c0f0d 55%, $card 100%);
+  text-decoration: none !important;
+}
+.project-media.placeholder span {
+  color: $text; font-size: 1.6rem; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.15;
+}
+.project-media.placeholder small {
+  display: block; margin-top: 10px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; color: $accent;
+}
+.project-body { padding: 22px 24px 24px; display: flex; flex-direction: column; flex: 1; }
+.project-card .experience-title { margin: 0 0 4px; font-size: 1.3rem; font-weight: 900; }
+.project-card .experience-info { color: $muted; font-size: 0.9rem; margin: 0 0 14px; }
+.project-card .experience-desc { margin: 0 0 14px; font-size: 0.98rem; }
+.project-links { list-style: none; padding: 0; margin: 0 0 14px !important; font-size: 0.92rem; }
+.project-links li { margin: 2px 0; }
+.project-links li::before { content: "→ "; color: $muted; }
+.project-caption { margin: auto 0 0; color: $muted; font-size: 0.8rem; font-style: italic; }
+
+/* Skills */
+.skills-list { display: grid; gap: 18px; margin: 0; }
+.skill-row { display: grid; grid-template-columns: 180px 1fr; gap: 16px; }
+.skill-row dt { font-weight: 700; color: $text; }
+.skill-row dd { margin: 0; color: $muted; }
+
+/* Footer */
+footer {
+  height: auto;
+  padding: 32px 24px 48px;
+  color: $muted;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(230, 236, 238, 0.06);
+  background: $bg;
+}
+footer p { margin: 0 0 6px; }
+.footer-credit { opacity: 0.7; }
+
+@media (max-width: 767px) {
+  .project-grid { grid-template-columns: 1fr; }
+  .jumbotron { padding: 80px 0 56px !important; }
+  .skill-row { grid-template-columns: 1fr; gap: 2px; }
+}

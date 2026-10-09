@@ -1,0 +1,132 @@
+# Site settings (based on the devlopr-jekyll theme, MIT licence)
+title: Alex Catalán
+tagline: Senior Game System Engineer
+subtitle: Senior Game System Engineer · Technical & Systems Design, Mission Scripting, Cameras
+description: >-
+  Portfolio of Alex Catalán, Senior Game System Engineer at Rockstar North.
+  Technical & Systems Design, Mission Scripting, Cameras.
+url: "https://madowen.github.io"
+baseurl: ""
+lang: en
+
+# Navigation (single page: links jump to sections)
+urls:
+  - text: About
+    url: /#about
+  - text: Work
+    url: /#work
+  - text: Skills
+    url: /#skills
+  - text: Contact
+    url: /#contact
+
+# Author details
+author: Alex Catalán
+author_headline: Senior Game System Engineer · Technical & Systems Design, Mission Scripting, Cameras
+author_pitch: Nearly nine years at Rockstar North building gameplay systems, mission content and camera features for GTA VI, GTA Online, Red Dead Redemption 2 and Red Dead Online.
+author_bio: I'm a Senior Game System Engineer at Rockstar North. I design and script gameplay systems, mission content and camera features in RAGE Script and C#, from GTA Online heist content to main-story content for GTA VI. I hold a Computer Science degree and a Master's in video game creation from Universitat Pompeu Fabra.
+author_email: "mad.alexcc@gmail.com"
+github_username: madowen
+
+footer_text: "© 2026 Alejandro Catalán Cebollada · Trailers and game imagery © their respective publishers."
+
+# Skills (rendered by _includes/author_skills.html)
+author_skills:
+  - label: Design
+    items: Systems design · content & mission design · gameplay scripting · camera scripting · behaviour trees · game design
+  - label: Languages
+    items: RAGE Script (Rockstar's proprietary scripting language) · C#
+  - label: Engines & tools
+    items: RAGE · Unreal Engine · Unity · Visual Studio · Perforce · Git
+
+# Projects (Featured Work cards). See README.md for how to edit.
+show_author_project_details: true
+author_project_details:
+  - project_title: Grand Theft Auto VI
+    project_info: Rockstar North · 2023 – present · Senior Game System Engineer
+    project_description: Built, initially as sole developer, the framework for an undisclosed gameplay feature, then used it to deliver four pieces of content in the main story mission line as the team grew to five. Worked in constant collaboration with art, code (AI, gameplay, graphics) and UI teams. Feature details are under NDA.
+    project_url: https://www.youtube.com/watch?v=QdBZY2fkU-0
+    youtube_id: QdBZY2fkU-0
+    project_caption: Official trailer © Rockstar Games.
+    visibility: true
+
+  - project_title: GTA Online
+    project_info: Rockstar North · 2018 – 2021 · Online Mission Script Designer
+    project_description: As part of an ~8-person online team, scripted mission content for every major update from Southern San Andreas Super Sport Series (2018) to The Contract (2021). Built heist preparation missions, parachute jump challenges, driving modes for the Los Santos Tuners car meet, and playable arcade cabinet games for The Diamond Casino Heist.
+    project_url: https://www.youtube.com/watch?v=sPLD6LS_TIk
+    youtube_id: sPLD6LS_TIk
+    project_links:
+      - text: Los Santos Tuners
+        url: https://www.youtube.com/watch?v=sPLD6LS_TIk
+      - text: The Diamond Casino Heist
+        url: https://www.rockstargames.com/videos/2o72rrt8
+      - text: The Contract
+        url: https://www.youtube.com/watch?v=z9zGV59xj54
+    project_caption: Official trailers © Rockstar Games.
+    visibility: true
+
+  - project_title: Red Dead Redemption 2
+    project_info: Rockstar North · 2018 · Online Mission Script Designer
+    project_description: Owned the stable camera system, letting players view horses in their stalls and framing the selected horse in the centre of the shot.
+    project_url: https://www.rockstargames.com/videos/6c8k48rr
+    project_links:
+      - text: Official launch trailer
+        url: https://www.rockstargames.com/videos/6c8k48rr
+    project_caption: Official trailer © Rockstar Games.
+    visibility: true
+
+  - project_title: Red Dead Online
+    project_info: Rockstar North · 2019 · Online Mission Script Designer
+    project_description: Designed the kill cam system, which captures a snapshot of the player's character on death, whether killed by another player or by any other cause.
+    project_url: https://www.youtube.com/watch?v=J4nMeH6DaOI
+    youtube_id: J4nMeH6DaOI
+    project_links:
+      - text: Red Dead Online
+        url: https://www.rockstargames.com/reddeadonline
+    project_caption: Official trailer © Rockstar Games.
+    visibility: true
+
+  - project_title: Surf World Series
+    project_info: Climax Studios · 2017 · Programmer
+    project_description: Programmer at Climax Studios on Surf World Series.
+    project_url: https://www.youtube.com/watch?v=H4FEb2AbS_4
+    youtube_id: H4FEb2AbS_4
+    project_links:
+      - text: Steam
+        url: https://store.steampowered.com/app/462640/Surf_World_Series/
+    project_caption: Official video © Vision Games Publishing.
+    visibility: true
+
+  - project_title: Dream Hills
+    project_info: Master's project · UPF Barcelona School of Management · 2015 – 2016
+    project_description: Master's project for the Master in Creation of Video Games at Universitat Pompeu Fabra. Our team built a custom engine from scratch; I programmed engine systems, the particle system, the camera and car racing, and designed the crafting system.
+    project_url: https://www.youtube.com/watch?v=t8ik-csI5ck
+    youtube_id: t8ik-csI5ck
+    project_links:
+      - text: Walkthrough
+        url: https://www.youtube.com/watch?v=L8xagl9YTGY
+    visibility: true
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - .ruby-version
+  - .sass-cache/
+  - .jekyll-cache/
+  - node_modules/
+  - vendor/
