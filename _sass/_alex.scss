@@ -180,3 +180,14 @@ footer p { margin: 0 0 6px; }
   .jumbotron { padding: 80px 0 56px !important; }
   .skill-row { grid-template-columns: 1fr; gap: 2px; }
 }
+
+.hero-avatar {
+  display: block;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid $accent;
+  margin: 0 0 28px;
+}
+@media (max-width: 600px) { .hero-avatar { width: 120px; height: 120px; } }
