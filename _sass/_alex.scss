@@ -191,3 +191,19 @@ footer p { margin: 0 0 6px; }
   margin: 0 0 28px;
 }
 @media (max-width: 600px) { .hero-avatar { width: 120px; height: 120px; } }
+
+/* Hero cover, centred like the devlopr demo */
+.jumbotron {
+  background-color: $bg !important;
+  background-image: linear-gradient(rgba(15,20,22,0.55), rgba(15,20,22,0.85)), url('/assets/img/hero-cover.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed;
+  text-align: center !important;
+  padding: 140px 0 110px !important;
+}
+.jumbotron .hero-avatar { margin: 0 auto 28px; }
+.jumbotron .jumbotron-heading { color: #fff !important; }
+.jumbotron .lead { color: #E6ECEE !important; margin: 0 auto 36px !important; }
+.jumbotron-btns { margin-top: 0; }
+@media (max-width: 900px) { .jumbotron { background-attachment: scroll; padding: 110px 0 80px !important; } }
