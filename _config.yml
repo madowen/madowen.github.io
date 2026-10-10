@@ -35,7 +35,7 @@ footer_text: "© 2026 Alejandro Catalán Cebollada · Trailers and game imagery 
 # Skills (rendered by _includes/author_skills.html)
 author_skills:
   - label: Design
-    items: System Design · Game Design · Gameplay Scripting · Content Creation
+    items: System Design · Game Design · Gameplay Scripting · Content Creation · Camera Scripting · Behavior Trees
   - label: Languages
     items: RAGE Script (Rockstar's proprietary scripting language) · C#
   - label: Engines & tools
