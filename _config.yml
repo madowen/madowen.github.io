@@ -39,7 +39,7 @@ author_skills:
   - label: Engines & tools
     items: RAGE · Unity · Unreal Engine · Visual Studio · Perforce · Git
   - label: Languages
-    items: C# · RAGE Script (Rockstar's proprietary scripting language)
+    items: C# · RAGE Script (Rockstar's proprietary scripting language) · C++
 
 # Projects (Featured Work cards). See README.md for how to edit.
 show_author_project_details: true
