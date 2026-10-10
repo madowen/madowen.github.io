@@ -37,9 +37,9 @@ author_skills:
   - label: Design
     items: System Design · Game Design · Gameplay Scripting · Content Creation · Camera Scripting · Behavior Trees
   - label: Engines & tools
-    items: RAGE · Unreal Engine · Unity · Visual Studio · Perforce · Git
+    items: RAGE · Unity · Unreal Engine · Visual Studio · Perforce · Git
   - label: Languages
-    items: RAGE Script (Rockstar's proprietary scripting language) · C#
+    items: C# · RAGE Script (Rockstar's proprietary scripting language)
 
 # Projects (Featured Work cards). See README.md for how to edit.
 show_author_project_details: true
