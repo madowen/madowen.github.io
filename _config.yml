@@ -49,6 +49,16 @@ author_project_details:
     project_description: "I created the four in-game console and arcade games in GTA VI: Tenebrae Lux, Street Trash 3: Dezombifier, Time Jackers: Rewind and Bang for your Buck. Initially as sole developer, I built a common framework as the base for all of them, then developed the gameplay systems that give each game its own shape, as the team grew to five."
     project_url: https://www.youtube.com/watch?v=QdBZY2fkU-0
     youtube_id: QdBZY2fkU-0
+    project_quotes:
+      - text: "This game has video games inside it that feel more complete than some real games I've played"
+        source: Creative Bloq
+        url: https://www.creativebloq.com/reviews/gta-6-review-holy-sh-t-its-good
+      - text: "That's a pretty impressive amount of game that's not Grand Theft Auto 6 in your copy of Grand Theft Auto 6."
+        source: "IGN (Horti)"
+        url: https://www.ign.com/articles/forget-the-lighthouse-gta-6s-best-minigame-is-a-full-blown-zombie-shooter-that-will-take-you-hours-to-beat
+      - text: All four of these games are fully fleshed out experiences
+        source: "IGN (video)"
+        url: https://www.ign.com/videos/gta-6-playing-every-arcade-and-console-game
     project_caption: Official trailer © Rockstar Games.
     visibility: true
 
@@ -75,9 +85,16 @@ author_project_details:
     project_description: "An isometric twin-stick zombie shooter with roguelike mechanics. Fight through the streets, pick perk cards as you level up, collect gears and extract before the clock runs out."
     project_url: https://www.youtube.com/watch?v=ZEhUS2B3wcs
     youtube_id: ZEhUS2B3wcs
-    project_quote: It is ludicrous that something as meaty and polished as Street Trash 3 exists inside another video game
-    project_quote_source: IGN
-    project_quote_url: https://www.ign.com/articles/forget-the-lighthouse-gta-6s-best-minigame-is-a-full-blown-zombie-shooter-that-will-take-you-hours-to-beat
+    project_quotes:
+      - text: It is ludicrous that something as meaty and polished as Street Trash 3 exists inside another video game
+        source: IGN
+        url: https://www.ign.com/articles/forget-the-lighthouse-gta-6s-best-minigame-is-a-full-blown-zombie-shooter-that-will-take-you-hours-to-beat
+      - text: "...it impressed me enough to want to beat it fully. After nearly four hours, I still haven't."
+        source: IGN
+        url: https://www.ign.com/articles/forget-the-lighthouse-gta-6s-best-minigame-is-a-full-blown-zombie-shooter-that-will-take-you-hours-to-beat
+      - text: "a surprisingly entertaining zombie shooter (in fact, it's the one I liked most)"
+        source: "3DJuegos (translated from Spanish)"
+        url: https://www.3djuegos.com/juegos/grand-theft-auto-vi/analisis/analisis-gta-vi-videojuego-perfecto
     project_caption: Gameplay footage by Longplay Database
     visibility: true
 
@@ -86,9 +103,13 @@ author_project_details:
     project_description: "A top-down sci-fi shooter where Captain Jack Hoffman uses his chrono-power to slow down time and reach each level's exit before the timer runs out."
     project_url: https://www.youtube.com/watch?v=7ou4OOgtW20
     youtube_id: 7ou4OOgtW20
-    project_quote: "Time Jackers is somewhat similar to Street Trash III given its top-down isometric perspective. But it's more action-oriented–less evading enemies and more shooting them dead."
-    project_quote_source: GameSpot
-    project_quote_url: https://www.gamespot.com/articles/all-joysystem-video-games-in-gta-6/
+    project_quotes:
+      - text: "shout out to my particular favourite, ‘Time Jackers Rewind’"
+        source: Finger Guns
+        url: https://fingerguns.net/reviews/2026/11/18/grand-theft-auto-vi-review-ps5-a-true-romance/
+      - text: "Time Jackers is somewhat similar to Street Trash III given its top-down isometric perspective. But it's more action-oriented–less evading enemies and more shooting them dead."
+        source: GameSpot
+        url: https://www.gamespot.com/articles/all-joysystem-video-games-in-gta-6/
     project_caption: Gameplay footage by Kirito
     visibility: true
 
@@ -97,9 +118,13 @@ author_project_details:
     project_description: "An on-rails first-person hunting game played on arcade cabinets around Leonida. Shoot the bucks for cash, leave the does alone and unlock new hunting grounds."
     project_url: https://www.youtube.com/watch?v=hkimUMlg-l8
     youtube_id: hkimUMlg-l8
-    project_quote: "...his local bar has a darkly humorous riff on classic Buck Hunter cabinets I kept getting sucked into."
-    project_quote_source: "IGN, GTA 6 Review"
-    project_quote_url: https://www.ign.com/articles/grand-theft-auto-vi-review
+    project_quotes:
+      - text: "...his local bar has a darkly humorous riff on classic Buck Hunter cabinets I kept getting sucked into."
+        source: "IGN, GTA 6 Review"
+        url: https://www.ign.com/articles/grand-theft-auto-vi-review
+      - text: Bang For Your Buck is so much fun.
+        source: Press Start
+        url: https://press-start.com.au/news/2026/11/18/theres-actual-video-games-inside-gta-6-that-are-totally-worth-the-couch-time/
     project_caption: Gameplay footage by TNAG
     visibility: true
 
