@@ -155,7 +155,27 @@ ol, ul { margin-left: 0 !important; }
 .project-links { list-style: none; padding: 0; margin: 0 0 14px !important; font-size: 0.92rem; }
 .project-links li { margin: 2px 0; }
 .project-links li::before { content: "→ "; color: $muted; }
+.project-quote {
+  margin: auto 0 0;
+  padding: 0 0 0 14px;
+  border-left: 2px solid $accent;
+  color: $text;
+  font-size: 0.92rem;
+  font-style: italic;
+}
+.project-quote p { margin: 0 0 6px; }
+.project-quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: $muted;
+}
+.project-quote cite a { color: $accent !important; text-decoration: none; }
+.project-quote cite a:hover { text-decoration: underline; }
 .project-caption { margin: auto 0 0; color: $muted; font-size: 0.8rem; font-style: italic; }
+.project-quote + .project-caption { margin-top: 12px; }
 
 /* Skills */
 .skills-list { display: grid; gap: 18px; margin: 0; }

@@ -6,11 +6,15 @@
          alt="{{ project.project_title }} video thumbnail" loading="lazy" />
     <span class="play" aria-hidden="true"></span>
   </a>
-  {% else %}
+  {% elsif project.project_url %}
   <a class="project-media placeholder" href="{{ project.project_url }}" target="_blank" rel="noopener"
      aria-label="Watch the {{ project.project_title }} video">
     <span>{{ project.project_title }}<small>Watch trailer</small></span>
   </a>
+  {% else %}
+  <div class="project-media placeholder">
+    <span>{{ project.project_title }}</span>
+  </div>
   {% endif %}
   <div class="project-body">
     <h3 class="experience-title">{{ project.project_title }}</h3>
@@ -22,6 +26,16 @@
       <li><a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.text }}</a></li>
       {% endfor %}
     </ul>
+    {% endif %}
+    {% if project.project_quote %}
+    <blockquote class="project-quote">
+      <p>&ldquo;{{ project.project_quote }}&rdquo;</p>
+      {% if project.project_quote_url %}
+      <cite><a href="{{ project.project_quote_url }}" target="_blank" rel="noopener">{{ project.project_quote_source }}</a></cite>
+      {% elsif project.project_quote_source %}
+      <cite>{{ project.project_quote_source }}</cite>
+      {% endif %}
+    </blockquote>
     {% endif %}
     {% if project.project_caption %}<p class="project-caption">{{ project.project_caption }}</p>{% endif %}
   </div>

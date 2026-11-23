@@ -28,11 +28,14 @@ Almost everything lives in `_config.yml`:
     - text: Red Dead Online
       url: https://www.rockstargames.com/reddeadonline
   project_caption: Official trailer © Rockstar Games.   # optional small italic line
+  project_quote: while simultaneously providing a few excellent hours of puzzling.  # optional press quote
+  project_quote_source: Kotaku   # outlet name shown under the quote
+  project_quote_url: https://kotaku.com/...            # optional link on the outlet name
   visibility: true           # set to false to hide the card
 ```
 
-Without `youtube_id`, the card shows a styled block with the project title
-that links to `project_url`.
+Without `youtube_id`, the card shows a styled block with the project title.
+If `project_url` is also missing, the block is not a link (useful while a video is still to be added).
 
 Edit the file on GitHub (pencil icon), commit, and the site updates in a minute or two.
 
