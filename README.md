@@ -28,9 +28,13 @@ Almost everything lives in `_config.yml`:
     - text: Red Dead Online
       url: https://www.rockstargames.com/reddeadonline
   project_caption: Official trailer © Rockstar Games.   # optional small italic line
-  project_quote: while simultaneously providing a few excellent hours of puzzling.  # optional press quote
+  project_quote: while simultaneously providing a few excellent hours of puzzling.  # optional single press quote
   project_quote_source: Kotaku   # outlet name shown under the quote
   project_quote_url: https://kotaku.com/...            # optional link on the outlet name
+  project_quotes:            # optional list; if present, used instead of the single quote fields
+    - text: Don't let that fool you because it's one of the coolest video games in GTA 6.
+      source: GameSpot
+      url: https://www.gamespot.com/articles/all-joysystem-video-games-in-gta-6/
   visibility: true           # set to false to hide the card
 ```
 

@@ -57,9 +57,16 @@ author_project_details:
     project_description: "A black-and-white first-person puzzle game on the JoySystem console. You wash up on an island and solve your way to a lighthouse, in a parody of artsy indie auteur games."
     project_url: https://www.youtube.com/watch?v=adiQtS-5wOk
     youtube_id: adiQtS-5wOk
-    project_quote: while simultaneously providing a few excellent hours of puzzling.
-    project_quote_source: Kotaku
-    project_quote_url: https://kotaku.com/gta-6s-tenebrae-lux-is-a-hilarious-parody-of-video-game-auteurs-and-a-surprisingly-good-puzzle-diversion-2000758837
+    project_quotes:
+      - text: "Don't let that fool you because it's one of the coolest video games in GTA 6."
+        source: GameSpot
+        url: https://www.gamespot.com/articles/all-joysystem-video-games-in-gta-6/
+      - text: Tenebrae Lux hooked me immediately by showing off a series of surprisingly mind-bending puzzles.
+        source: Kotaku
+        url: https://kotaku.com/gta-6s-tenebrae-lux-is-a-hilarious-parody-of-video-game-auteurs-and-a-surprisingly-good-puzzle-diversion-2000758837
+      - text: Tenebrae Lux is a pitch-perfect parody of a very specific kind of elevated art game.
+        source: Polygon
+        url: https://www.polygon.com/gta-6-tenebrae-lux-jonathan-blow/
     project_caption: Gameplay footage by BeardBear
     visibility: true
 
@@ -90,9 +97,9 @@ author_project_details:
     project_description: "An on-rails first-person hunting game played on arcade cabinets around Leonida. Shoot the bucks for cash, leave the does alone and unlock new hunting grounds."
     project_url: https://www.youtube.com/watch?v=hkimUMlg-l8
     youtube_id: hkimUMlg-l8
-    project_quote: Bang For Your Buck is an on-rails first-person shooter (akin to Time Crisis and others in the genre).
-    project_quote_source: GameSpot
-    project_quote_url: https://www.gamespot.com/articles/all-joysystem-video-games-in-gta-6/
+    project_quote: "...his local bar has a darkly humorous riff on classic Buck Hunter cabinets I kept getting sucked into."
+    project_quote_source: "IGN, GTA 6 Review"
+    project_quote_url: https://www.ign.com/articles/grand-theft-auto-vi-review
     project_caption: Gameplay footage by TNAG
     visibility: true
 

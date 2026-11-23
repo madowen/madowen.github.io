@@ -27,15 +27,30 @@
       {% endfor %}
     </ul>
     {% endif %}
-    {% if project.project_quote %}
-    <blockquote class="project-quote">
-      <p>&ldquo;{{ project.project_quote }}&rdquo;</p>
-      {% if project.project_quote_url %}
-      <cite><a href="{{ project.project_quote_url }}" target="_blank" rel="noopener">{{ project.project_quote_source }}</a></cite>
-      {% elsif project.project_quote_source %}
-      <cite>{{ project.project_quote_source }}</cite>
+    {% if project.project_quotes or project.project_quote %}
+    <div class="project-quotes">
+      {% if project.project_quotes %}
+        {% for quote in project.project_quotes %}
+        <blockquote class="project-quote">
+          <p>&ldquo;{{ quote.text }}&rdquo;</p>
+          {% if quote.url %}
+          <cite><a href="{{ quote.url }}" target="_blank" rel="noopener">{{ quote.source }}</a></cite>
+          {% elsif quote.source %}
+          <cite>{{ quote.source }}</cite>
+          {% endif %}
+        </blockquote>
+        {% endfor %}
+      {% elsif project.project_quote %}
+      <blockquote class="project-quote">
+        <p>&ldquo;{{ project.project_quote }}&rdquo;</p>
+        {% if project.project_quote_url %}
+        <cite><a href="{{ project.project_quote_url }}" target="_blank" rel="noopener">{{ project.project_quote_source }}</a></cite>
+        {% elsif project.project_quote_source %}
+        <cite>{{ project.project_quote_source }}</cite>
+        {% endif %}
+      </blockquote>
       {% endif %}
-    </blockquote>
+    </div>
     {% endif %}
     {% if project.project_caption %}<p class="project-caption">{{ project.project_caption }}</p>{% endif %}
   </div>
