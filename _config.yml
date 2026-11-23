@@ -46,7 +46,7 @@ show_author_project_details: true
 author_project_details:
   - project_title: Grand Theft Auto VI
     project_info: Rockstar North · 2022 – present · Senior Game System Engineer
-    project_description: "I created the four in-game console and arcade games in GTA VI: Tenebrae Lux, Street Trash 3: Dezombifier, Time Jackers: Rewind and Bang for your Buck. I built, initially as sole developer, a common framework as the base for all of them, and developed the gameplay systems that shape each game as the team grew to five."
+    project_description: "I created the four in-game console and arcade games in GTA VI: Tenebrae Lux, Street Trash 3: Dezombifier, Time Jackers: Rewind and Bang for your Buck. Initially as sole developer, I built a common framework as the base for all of them, then developed the gameplay systems that give each game its own shape, as the team grew to five."
     project_url: https://www.youtube.com/watch?v=QdBZY2fkU-0
     youtube_id: QdBZY2fkU-0
     project_caption: Official trailer © Rockstar Games.
@@ -54,7 +54,7 @@ author_project_details:
 
   - project_title: Tenebrae Lux
     project_info: Rockstar North · Grand Theft Auto VI · Senior Game System Engineer
-    project_description: A black-and-white first-person puzzle game on the JoySystem in GTA VI, set on an island as you work your way to a lighthouse. I developed the gameplay systems for Tenebrae Lux, using the common framework I built as the base for all four in-game games.
+    project_description: "A black-and-white first-person puzzle game on the JoySystem console. You wash up on an island and solve your way to a lighthouse, in a parody of artsy indie auteur games."
     project_url: https://www.youtube.com/watch?v=adiQtS-5wOk
     youtube_id: adiQtS-5wOk
     project_quote: while simultaneously providing a few excellent hours of puzzling.
@@ -65,7 +65,7 @@ author_project_details:
 
   - project_title: "Street Trash 3: Dezombifier"
     project_info: Rockstar North · Grand Theft Auto VI · Senior Game System Engineer
-    project_description: "A top-down zombie shooter on the JoySystem in GTA VI: you fight through the streets, pick perk cards as you level up, and try to extract before the clock runs out. I developed the gameplay systems that shape Street Trash 3, using the common framework I built as the base for all four in-game games."
+    project_description: "An isometric twin-stick zombie shooter with roguelike mechanics. Fight through the streets, pick perk cards as you level up, collect gears and extract before the clock runs out."
     project_url: https://www.youtube.com/watch?v=ZEhUS2B3wcs
     youtube_id: ZEhUS2B3wcs
     project_quote: It is ludicrous that something as meaty and polished as Street Trash 3 exists inside another video game
@@ -76,7 +76,7 @@ author_project_details:
 
   - project_title: "Time Jackers: Rewind"
     project_info: Rockstar North · Grand Theft Auto VI · Senior Game System Engineer
-    project_description: "A top-down sci-fi shooter on the JoySystem in GTA VI, where Captain Jack Hoffman uses a time-slowing chrono-power to reach each level's exit before the timer runs out. I developed the gameplay systems for Time Jackers: Rewind, using the common framework I built as the base for all four in-game games."
+    project_description: "A top-down sci-fi shooter where Captain Jack Hoffman uses his chrono-power to slow down time and reach each level's exit before the timer runs out."
     project_url: https://www.youtube.com/watch?v=7ou4OOgtW20
     youtube_id: 7ou4OOgtW20
     project_quote: "Time Jackers is somewhat similar to Street Trash III given its top-down isometric perspective. But it's more action-oriented–less evading enemies and more shooting them dead."
@@ -87,7 +87,7 @@ author_project_details:
 
   - project_title: Bang for your Buck
     project_info: Rockstar North · Grand Theft Auto VI · Senior Game System Engineer
-    project_description: "A first-person hunting arcade game in GTA VI, played on cabinets around Leonida: you shoot bucks for cash, leave the does alone, and unlock more hunting grounds. I developed the gameplay systems for Bang for your Buck, using the common framework I built as the base for all four in-game games."
+    project_description: "An on-rails first-person hunting game played on arcade cabinets around Leonida. Shoot the bucks for cash, leave the does alone and unlock new hunting grounds."
     project_url: https://www.youtube.com/watch?v=hkimUMlg-l8
     youtube_id: hkimUMlg-l8
     project_quote: Bang For Your Buck is an on-rails first-person shooter (akin to Time Crisis and others in the genre).
